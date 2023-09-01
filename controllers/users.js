@@ -1,14 +1,16 @@
 const { response } = require("express");
 const User = require("../models/user");
+const { mergeSort } = require("../helpers/merge-sort");
 
-const usersGet = async (req, res = response) => {
+const getSortUsers = async (req, res = response) => {
 
     //get all users
     const users = await User.find();
+    const sortUsers = mergeSort(users)
 
     res.status(200).json({
         ok: true,
-        users
+        sortUsers
     });
 
 };
@@ -39,7 +41,7 @@ const usersDelete = (req, res = response) => {
 };
 
 module.exports = {
-  usersGet,
+  getSortUsers,
   usersUpdate,
   usersPost,
   usersDelete,
