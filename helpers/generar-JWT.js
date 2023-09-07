@@ -9,7 +9,7 @@ const generarJWT = ( {email = '', img = '', name=''} ) => {
         const payload = { email, img, name };
 
         jwt.sign( payload, process.env.SECRETORPRIVATEKEY, {
-            expiresIn: '1h'
+            expiresIn: '4h'
         }, ( err, token ) => {
 
             if ( err ) {
